@@ -30,6 +30,50 @@ namespace RestWithASPNETUdemy.Controllers
             }
             return BadRequest("Invalid Inoput");
         }
+
+        [HttpGet("subtraction/{firstNumber}/{secondNumber}")]
+        public IActionResult subtraction(string firstNumber, string secondNumber)
+        {
+            if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
+            {
+                var subtraction = ConvertToDecimal(firstNumber) - ConvertToDecimal(secondNumber);
+                return Ok(subtraction.ToString());
+            }
+            return BadRequest("Invalid Inoput");
+        }
+
+        [HttpGet("average/{firstNumber}/{secondNumber}")]
+        public IActionResult average(string firstNumber, string secondNumber)
+        {
+            if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
+            {
+                var average = ConvertToDecimal(firstNumber) / ConvertToDecimal(secondNumber);
+                return Ok(average.ToString());
+            }
+            return BadRequest("Invalid Inoput");
+        }
+
+        [HttpGet("multiplication/{firstNumber}/{secondNumber}")]
+        public IActionResult multiplication(string firstNumber, string secondNumber)
+        {
+            if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
+            {
+                var multiplication = ConvertToDecimal(firstNumber) * ConvertToDecimal(secondNumber);
+                return Ok(multiplication.ToString());
+            }
+            return BadRequest("Invalid Inoput");
+        }
+
+        [HttpGet("squareRoot/{firstNumber}")]
+        public IActionResult squareRoot(string firstNumber)
+        {
+            if (IsNumeric(firstNumber))
+            {
+                var squareRoot = Math.Sqrt((double)ConvertToDecimal(firstNumber));
+                return Ok(squareRoot.ToString());
+            }
+            return BadRequest("Invalid Inoput");
+        }
         private bool IsNumeric(string strNumber)
         {
             double number;
